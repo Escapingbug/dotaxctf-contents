@@ -1,0 +1,37 @@
+<root>
+  <styles>
+    <!-- <include src="file://{resources}/styles/dotastyles.css"/> -->
+    <include src="file://{resources}/styles/hud_workshop_testbed.css"/>
+  </styles>
+  <script>
+    GameEvents.Subscribe("updateScores", function (event) {
+      let scoreText = "第 " + event.round_count + " 轮当前得分: ";
+      for (const candidate in event.scores) {
+        const score = event.scores[candidate];
+        scoreText += "\n";
+        scoreText += candidate + ": " + score;
+      }
+      $("#scoring").text = scoreText;
+    });
+
+    GameEvents.Subscribe("updateRoundTimer", function (event) {
+      const minutes = parseInt(event.cur_time / 60);
+      const seconds = parseInt(event.cur_time % 60);
+      $("#timer").text = `第 ${event.round_count} 轮开始于 ${minutes}:${seconds} 持续到 ${minutes+5}:${seconds}`;
+    });
+  </script>
+
+<!--
+<Panel class="DemoHud" hittest="false">
+</Panel> -->
+  <Panel class="ControlPanel">
+    <Panel class="ControlPanelContainer">
+      <Panel id="Maximized">
+        <Panel id="ScoreContainer" />
+        <Label id="scoring" text="当前得分:" />
+        <Label id="timer" text="第 X 轮剩余时间: Y 秒" />
+      </Panel>
+    </Panel>
+  </Panel>
+
+</root>

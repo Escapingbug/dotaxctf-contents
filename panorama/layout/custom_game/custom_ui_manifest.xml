@@ -1,0 +1,7 @@
+<root>
+	<Panel>
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/hud_workshop_testbed.xml" /> 
+        
+        <!-- <CustomUIElement type="FlyoutScoreboard" layoutfile="file://{resources}/layout/custom_game/multiteam_flyout_scoreboard.xml" /> -->
+	</Panel>
+</root>
