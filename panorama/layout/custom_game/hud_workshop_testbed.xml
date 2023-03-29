@@ -19,6 +19,10 @@
       const seconds = parseInt(event.cur_time % 60);
       $("#timer").text = `第 ${event.round_count} 轮开始于 ${minutes}:${seconds} 持续到 ${minutes+5}:${seconds}`;
     });
+
+    GameEvents.Subscribe("roundEnd", function (event) {
+      $("#timer").text = `第 ${event.round_count} 轮结束`;
+    });
   </script>
 
 <!--
